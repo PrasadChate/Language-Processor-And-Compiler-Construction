@@ -44,7 +44,7 @@ class Assembler {
             } else if (line.startsWith("END")) {
                 break;
             } else if (!line.isEmpty()) {
-                if (line.startsWith("=") || line.startsWith("'")) {
+                if (line.startsWith("=") || line.contains("='")) {
                     processLiteral(line);
                 } else if (line.startsWith("LTORG")) {
                     processLTORG();
@@ -68,7 +68,12 @@ class Assembler {
     }
 
     public void processLiteral(String line) {
-        String literal = line.split(",")[1].trim();
+        String literal;
+        if (line.contains("='")) {
+            literal = line.split("='")[1].split("'")[0];
+        } else {
+            literal = line.split(",")[1].trim();
+        }
         if (!literalTable.containsKey(literal)) {
             literalTable.put(literal, literalTable.size() + 1);
             poolTable.add(locationCounter);
