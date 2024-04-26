@@ -20,57 +20,57 @@ Tasks:-
 	<br>	N                DS        1
 	<br>	END
 	<br>	"
-#2 .	Build a lexer, using LEX, for finding whether a document is of a given TOPIC -Medical (Hint: search for predecided key words, (related to that TOPIC), in the document and count them to decide whether they are enough to declare whether a document is of the topic or not)
-#3.	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
-	INPUT/CODE
-	START 100
-	READ A
-	MOVER AREG, ='1'
-	MOVEM AREG, B
-	MOVER BREG, ='6'
-	ADD AREG, BREG
-	COMP AREG, A
-	BC GT, LAST
-	LTORG
-	NEXT SUB AREG, ='1'
-	MOVER CREG, B
-	ADD CREG, ='8'
-	MOVEM CREG, B
-	PRINT B
-	LAST STOP
-	A DS 1
-	B DS 1
-	END
-#4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
-	INPUT/CODE
-	LOAD J
-	STORE M
-	MACRO EST
-	LOAD e
-	ADD d
-	MEND
-	LOAD S
-	MACRO SUB4 ABC
-	LOAD U
-	STORE ABC
-	MEND
-  LOAD P
-ADD V
-MACRO ADD7 P4, P5, P6
-LOAD P5
-SUB4 XYZ
-SUB 8
-SUB 2
-STORE P4
-STORE P6
-MEND
-EST
-ADD7 C4, C5, C6
-SUB4 z
-END
-#5.	
+<br>#2 .	Build a lexer, using LEX, for finding whether a document is of a given TOPIC -Medical (Hint: search for predecided key words, (related to that TOPIC), in the document and count them to decide whether they are enough to declare whether a document is of the topic or not)
+<br>#3.	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
+<br>	INPUT/CODE
+<br>	START 100
+<br>	READ A
+<br>	MOVER AREG, ='1'
+<br>	MOVEM AREG, B
+<br>	MOVER BREG, ='6'
+<br>	ADD AREG, BREG
+<br>	COMP AREG, A
+<br>	BC GT, LAST
+<br>	LTORG
+<br>	NEXT SUB AREG, ='1'
+<br>	MOVER CREG, B
+<br>	ADD CREG, ='8'
+<br>	MOVEM CREG, B
+<br>	PRINT B
+<br>	LAST STOP
+<br>	A DS 1
+<br>	B DS 1
+<br>	END
+<br>#4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
+<br>	INPUT/CODE
+<br>	LOAD J
+<br>	STORE M
+<br>	MACRO EST
+<br>	LOAD e
+<br>	ADD d
+<br>	MEND
+<br>	LOAD S
+<br>	MACRO SUB4 ABC
+<br>	LOAD U
+<br>	STORE ABC
+<br>	MEND
+  <br>LOAD P
+<br>ADD V
+<br>MACRO ADD7 P4, P5, P6
+<br>LOAD P5
+<br>SUB4 XYZ
+<br>SUB 8
+<br>SUB 2
+<br>STORE P4
+<br>STORE P6
+<br>MEND
+<br>EST
+<br>ADD7 C4, C5, C6
+<br>SUB4 z
+<br>END
+<br>#5.	
 	".Write a program to evaluate a given variable name using YACC specification.
- SAMPLE INPUT
+<br> SAMPLE INPUT
  1) pune
  2) PUNE
  3) Pune1
