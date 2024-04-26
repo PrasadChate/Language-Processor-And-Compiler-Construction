@@ -1,4 +1,5 @@
 # Language-Processor-And-Compiler-Construction
+<br>Codes Are Written In Java
 Tasks:-
 <br>
 		1.	"Write a program to generate Symbol & Literal table of a two-pass Assembler for the given Assembly language source code.<br>
@@ -75,5 +76,18 @@ Tasks:-
  2) PUNE
  3) Pune1
  4) pUNE_2"
-
-
+<br> To run the 5th task files follow the following steps:
+<br>1.Install MinGW:
+<br>During installation, select the option to install MSYS (Minimal SYStem), which provides a Unix-like shell environment for Windows.
+<br>2.Install Flex:
+<br>Write YACC and Lex Specifications:
+Save the YACC code in a file named variable.y.
+Save the Lex code in a file named variable.l
+<br>Compile YACC Specification:
+Open the MSYS shell (MinGW Shell) from the Start menu.
+Navigate to the directory containing variable.y.
+Run the following command:-
+<br>(a)yacc -d variable.y
+<br>(b)flex variable.l
+<br>(c)gcc y.tab.c lex.yy.c -o variable.exe -lfl
+<br>(d)./variable.exe
