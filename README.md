@@ -1,6 +1,6 @@
 # Language-Processor-And-Compiler-Construction
 Tasks:-
-1	"Write a program to generate Symbol & Literal table of a two-pass Assembler for the given Assembly language source code.
+1.	"Write a program to generate Symbol & Literal table of a two-pass Assembler for the given Assembly language source code.
             START 300
 READ M
                   READ N
@@ -19,8 +19,8 @@ M                DS        1
 N                DS        1
 END
 "
-2	Build a lexer, using LEX, for finding whether a document is of a given TOPIC -Medical (Hint: search for predecided key words, (related to that TOPIC), in the document and count them to decide whether they are enough to declare whether a document is of the topic or not)
-3	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
+#2.	Build a lexer, using LEX, for finding whether a document is of a given TOPIC -Medical (Hint: search for predecided key words, (related to that TOPIC), in the document and count them to decide whether they are enough to declare whether a document is of the topic or not)
+#3.	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
 	INPUT/CODE
 	START 100
 	READ A
@@ -40,7 +40,7 @@ END
 	A DS 1
 	B DS 1
 	END
-4	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
+#4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
 	INPUT/CODE
 	LOAD J
 	STORE M
@@ -67,7 +67,7 @@ EST
 ADD7 C4, C5, C6
 SUB4 z
 END
-5	
+#5.	
 	".Write a program to evaluate a given variable name using YACC specification.
  SAMPLE INPUT
  1) pune
