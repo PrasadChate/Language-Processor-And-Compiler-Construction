@@ -81,13 +81,13 @@ Tasks:-
 <br>During installation, select the option to install MSYS (Minimal SYStem), which provides a Unix-like shell environment for Windows.
 <br>2.Install Flex:
 <br>Write YACC and Lex Specifications:
-Save the YACC code in a file named variable.y.
-Save the Lex code in a file named variable.l
+Save the YACC code in a file named 5 variable.y.
+Save the Lex code in a file named 5 variable.l
 <br>Compile YACC Specification:
 Open the MSYS shell (MinGW Shell) from the Start menu.
 Navigate to the directory containing variable.y.
 Run the following command:-
-<br>(a)yacc -d variable.y
-<br>(b)flex variable.l
-<br>(c)gcc y.tab.c lex.yy.c -o variable.exe -lfl
-<br>(d)./variable.exe
+<br>(a)yacc -d 5 variable.y
+<br>(b)flex 5 variable.l
+<br>(c)gcc y.tab.c lex.yy.c -o 5 variable.exe -lfl
+<br>(d)./5 variable.exe
