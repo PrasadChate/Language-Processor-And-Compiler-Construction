@@ -25,8 +25,12 @@ Tasks:-
 <br>follow the steps to run the file of this task:
 <br><br>To compile and run this Lex specification:
 
-Save the Lex code in a file named medical.l.
-Use Flex to generate the lexer:
+<br>Save the Lex code in a file named 2 medical.l.
+<br>Use Flex to generate the lexer:
+1)flex 2 medical.l
+2)Compile the generated C code:gcc lex.yy.c -o 2 medical -lfl
+3)Run the executable: ./2 medical < input_document.txt
+
 <br>#3.	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
 <br>	INPUT/CODE
 <br>	START 100
