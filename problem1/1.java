@@ -126,12 +126,7 @@ class Assembler {
 
     public void assemble(List<String> sourceCode) {
         firstPass(sourceCode);
-        List<String> assembledCode = secondPass();
         generateTables();
-        System.out.println("\nAssembled Code:");
-        for (String line : assembledCode) {
-            System.out.println(line);
-        }
     }
 }
 
