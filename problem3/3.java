@@ -23,17 +23,15 @@ import java.util.*;
 
 class Assembler {
     private Map<String, Integer> symbolTable;
-    private Map<String, Integer> literalTable;
+    private List<String[]> literalTable;
     private List<Integer> poolTable;
     private int locationCounter;
-    private List<String> code;
 
     public Assembler() {
         symbolTable = new HashMap<>();
-        literalTable = new HashMap<>();
+        literalTable = new ArrayList<>();
         poolTable = new ArrayList<>();
         locationCounter = 0;
-        code = new ArrayList<>();
     }
 
     public void firstPass(List<String> sourceCode) {
@@ -57,7 +55,6 @@ class Assembler {
     }
 
     public void processInstruction(String line) {
-        code.add(line);
         locationCounter++;
     }
 
@@ -74,47 +71,16 @@ class Assembler {
         } else {
             literal = line.split(",")[1].trim();
         }
-        if (!literalTable.containsKey(literal)) {
-            literalTable.put(literal, literalTable.size() + 1);
-            poolTable.add(locationCounter);
-        }
+        literalTable.add(new String[]{literal, String.valueOf(locationCounter)});
+        poolTable.add(locationCounter);
+        locationCounter++;
     }
 
     public void processLTORG() {
-        for (Map.Entry<String, Integer> entry : literalTable.entrySet()) {
-            if (poolTable.contains(entry.getValue())) {
-                poolTable.remove(entry.getValue());
-                literalTable.put(entry.getKey(), locationCounter);
-                locationCounter++;
-            }
+        for (String[] literal : literalTable) {
+            poolTable.remove(poolTable.indexOf(Integer.parseInt(literal[1])));
+            literal[1] = String.valueOf(locationCounter++);
         }
-    }
-
-    public List<String> secondPass() {
-        List<String> assembledCode = new ArrayList<>();
-        for (String line : code) {
-            if (!line.startsWith("LTORG")) {
-                assembledCode.add(assembleInstruction(line));
-            }
-        }
-        return assembledCode;
-    }
-
-    public String assembleInstruction(String line) {
-        String[] parts = line.split(",");
-        String mnemonic = parts[0].trim();
-        StringBuilder assembledLine = new StringBuilder(mnemonic);
-        for (int i = 1; i < parts.length; i++) {
-            String operand = parts[i].trim();
-            if (operand.startsWith("=")) {
-                assembledLine.append(" ").append(literalTable.get(operand.substring(1)));
-            } else if (symbolTable.containsKey(operand)) {
-                assembledLine.append(" ").append(symbolTable.get(operand));
-            } else {
-                assembledLine.append(" ").append(operand);
-            }
-        }
-        return assembledLine.toString();
     }
 
     public void generateTables() {
@@ -126,13 +92,12 @@ class Assembler {
 
         System.out.println("\nLiteral Table:");
         System.out.println("Literal\tAddress");
-        for (Map.Entry<String, Integer> entry : literalTable.entrySet()) {
-            System.out.println(entry.getKey() + "\t" + entry.getValue());
+        for (String[] literal : literalTable) {
+            System.out.println(literal[0] + "\t" + literal[1]);
         }
 
         System.out.println("\nPool Table:");
-        System.out.println("Pool Address");
-        for (Integer address : poolTable) {
+        for (int address : poolTable) {
             System.out.println(address);
         }
     }
