@@ -58,8 +58,8 @@ B DS 1
 END
 ```
 
-#4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
-```
+### 4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
+```Assembly
 INPUT/CODE
 LOAD J
 STORE M
