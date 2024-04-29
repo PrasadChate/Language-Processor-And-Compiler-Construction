@@ -38,7 +38,10 @@ class Assembler {
             if (line.startsWith("START")) {
                 locationCounter = Integer.parseInt(line.split("\\s+")[1]);
             } else if (line.startsWith("END")) {
+                processLTORGorEND();
                 break;
+            } else if (line.startsWith("LTORG")) {
+                processLTORGorEND();
             } else if (!line.isEmpty()) {
                 if (line.startsWith("=") || line.contains("='")) {
                     processLiteral(line);
@@ -68,8 +71,15 @@ class Assembler {
         } else {
             literal = line.split(",")[1].trim();
         }
-        if (!literalTable.containsKey(literal)) {
-            literalTable.put(literal, literalTable.size() + locationCounter);
+        literalTable.put(literal, null);
+    }
+
+    public void processLTORGorEND() {
+        for (String literal : literalTable.keySet()) {
+            if (literalTable.get(literal) == null) {
+                literalTable.put(literal, locationCounter);
+                locationCounter++;
+            }
         }
     }
 
