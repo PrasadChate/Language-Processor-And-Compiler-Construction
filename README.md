@@ -37,41 +37,41 @@ Replace input_document.txt with the path to the document you want to analyze.
 
 ### 3.	Write a program to generate Symbol , Literal table &Pool table of a two-pass Assembler for the given Assembly language source code.
 ```Assembly
-	INPUT/CODE
-	START 100
-	READ A
-	MOVER AREG, ='1'
-	MOVEM AREG, B
-	MOVER BREG, ='6'
-	ADD AREG, BREG
-	COMP AREG, A
-	BC GT, LAST
-	LTORG
-	NEXT SUB AREG, ='1'
-	MOVER CREG, B
-	ADD CREG, ='8'
-	MOVEM CREG, B
-	PRINT B
-	LAST STOP
-	A DS 1
-	B DS 1
-	END
+INPUT/CODE
+START 100
+READ A
+MOVER AREG, ='1'
+MOVEM AREG, B
+MOVER BREG, ='6'
+ADD AREG, BREG
+COMP AREG, A
+BC GT, LAST
+LTORG
+NEXT SUB AREG, ='1'
+MOVER CREG, B
+ADD CREG, ='8'
+MOVEM CREG, B
+PRINT B
+LAST STOP
+A DS 1
+B DS 1
+END
 ```
 
 #4.	Write a program to generateMNT, MDT & Intermediate code of a two-pass Macro processor
 ```
-	INPUT/CODE
-	LOAD J
-	STORE M
-	MACRO EST
-	LOAD e
-	ADD d
-	MEND
-	LOAD S
-	MACRO SUB4 ABC
-	LOAD U
-	STORE ABC
-	MEND
+INPUT/CODE
+LOAD J
+STORE M
+MACRO EST
+LOAD e
+ADD d
+MEND
+LOAD S
+MACRO SUB4 ABC
+LOAD U
+STORE ABC
+MEND
 LOAD P
 ADD V
 MACRO ADD7 P4, P5, P6
@@ -88,8 +88,7 @@ SUB4 z
 END
 ```
 
-# Problem 5
-Write a program to evaluate a given variable name using YACC specification.
+### 5 Write a program to evaluate a given variable name using YACC specification.
 SAMPLE INPUT
 1) pune
 2) PUNE
@@ -97,7 +96,7 @@ SAMPLE INPUT
 4) pUNE_2
 follow the steps to run the file of this task:
 
-## To compile and run this Lex specification:
+#### To compile and run this Lex specification:
 
 Save the Lex code in a file named 5_var.l
 Save the YACC code in a file named 5_var.y
