@@ -79,8 +79,11 @@ class MacroProcessor {
         System.out.println("Macro Definition Table (MDT):");
         System.out.println(String.format("| %-10s | %-20s |", "Macro Name", "Definition"));
         for (Map.Entry<String, List<String>> entry : MDT.entrySet()) {
-            System.out.println(String.format("| %-10s | %-20s |", entry.getKey(), String.join("\n", entry.getValue())));
-            System.out.println("|           |                     |");
+            System.out.println(String.format("| %-10s |", entry.getKey()));
+            for (String line : entry.getValue()) {
+                System.out.println(String.format("|            | %-20s |", line));
+            }
+            System.out.println();
         }
         System.out.println();
 
