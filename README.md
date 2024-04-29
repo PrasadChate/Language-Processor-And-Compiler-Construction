@@ -1,7 +1,7 @@
 # Language-Processor-And-Compiler-Construction
 ## Tasks
 
-### 1.	"Write a program to generate Symbol & Literal table of a two-pass Assembler for the given Assembly language source code
+### 1. "Write a program to generate Symbol & Literal table of a two-pass Assembler for the given Assembly language source code
 ```Assembly
 START 100
 READ A
