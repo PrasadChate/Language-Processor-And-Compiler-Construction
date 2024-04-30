@@ -26,12 +26,14 @@ class Assembler {
     private List<String[]> literalTable;
     private List<Integer> poolTable;
     private int locationCounter;
+    private int poolStart;
 
     public Assembler() {
         symbolTable = new HashMap<>();
         literalTable = new ArrayList<>();
         poolTable = new ArrayList<>();
         locationCounter = 0;
+        poolStart = 0;
     }
 
     public void firstPass(List<String> sourceCode) {
@@ -40,9 +42,10 @@ class Assembler {
             if (line.startsWith("START")) {
                 locationCounter = Integer.parseInt(line.split("\\s+")[1]);
             } else if (line.startsWith("END")) {
+                processLTORG();
                 break;
             } else if (!line.isEmpty()) {
-                if (line.startsWith("=") || line.contains("='")) {
+                if (line.contains("='")) {
                     processLiteral(line);
                 } else if (line.startsWith("LTORG")) {
                     processLTORG();
@@ -55,32 +58,32 @@ class Assembler {
     }
 
     public void processInstruction(String line) {
-        locationCounter++;
+        if (!line.startsWith("DS") && !line.startsWith("LTORG")) {
+            locationCounter++;
+        }
     }
 
     public void processLabel(String line) {
         String[] parts = line.split("\\s+");
-        String label = parts[0];
-        symbolTable.put(label, locationCounter);
+        if (parts.length > 2 && parts[1].equals("DS")) {
+            symbolTable.put(parts[0], locationCounter);
+        } else if (parts.length > 1 && !parts[0].equals("MOVER") && !parts[0].equals("MOVEM") && !parts[0].equals("ADD") && !parts[0].equals("SUB") && !parts[0].equals("COMP") && !parts[0].equals("BC") && !parts[0].equals("READ") && !parts[0].equals("PRINT") && !parts[0].equals("STOP")) {
+            symbolTable.put(parts[0], locationCounter);
+        }
     }
 
     public void processLiteral(String line) {
-        String literal;
-        if (line.contains("='")) {
-            literal = line.split("='")[1].split("'")[0];
-        } else {
-            literal = line.split(",")[1].trim();
-        }
-        literalTable.add(new String[]{literal, String.valueOf(locationCounter)});
-        poolTable.add(locationCounter);
-        locationCounter++;
+        String literal = line.split("='")[1].split("'")[0];
+        literalTable.add(new String[]{literal, ""});
     }
 
     public void processLTORG() {
-        for (String[] literal : literalTable) {
-            poolTable.remove(poolTable.indexOf(Integer.parseInt(literal[1])));
+        for (int i = poolStart; i < literalTable.size(); i++) {
+            String[] literal = literalTable.get(i);
             literal[1] = String.valueOf(locationCounter++);
         }
+        poolTable.add(poolStart);
+        poolStart = literalTable.size();
     }
 
     public void generateTables() {
