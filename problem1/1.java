@@ -16,7 +16,6 @@
 // M                DS        1
 // N                DS        1
 // END
-
 import java.util.*;
 
 class Assembler {
@@ -43,14 +42,24 @@ class Assembler {
             } else if (line.startsWith("LTORG")) {
                 processLTORGorEND();
             } else if (!line.isEmpty()) {
+                String[] parts = line.split("\\s+");
+                if (parts.length > 1 && !isInstruction(parts[0])) {
+                    processLabel(line);
+                }
                 if (line.startsWith("=") || line.contains("='")) {
                     processLiteral(line);
-                } else {
-                    processLabel(line);
                 }
                 processInstruction(line);
             }
         }
+    }
+
+    public boolean isInstruction(String word) {
+        // List of all instruction mnemonics
+        Set<String> instructions = new HashSet<>(Arrays.asList(
+            "START", "END", "LTORG", "READ", "MOVER", "ADD", "SUB", "COMP", "BC", "STOP", "DS"
+        ));
+        return instructions.contains(word);
     }
 
     public void processInstruction(String line) {
@@ -60,8 +69,10 @@ class Assembler {
 
     public void processLabel(String line) {
         String[] parts = line.split("\\s+");
-        String label = parts[0];
-        symbolTable.put(label, locationCounter);
+        if (parts.length > 1 && !isInstruction(parts[0])) {
+            String label = parts[0];
+            symbolTable.put(label, locationCounter);
+        }
     }
 
     public void processLiteral(String line) {
